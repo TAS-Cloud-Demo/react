@@ -49,7 +49,7 @@ describe('invertObject', () => {
           c: '3',
         })
       )
-    ).toEqual(['3', '4']);
+    ).toEqual(['7', '4']);
 
     expect(
       objectValues(
