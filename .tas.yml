@@ -3,7 +3,7 @@
 #
 # supported frameworks: mocha|jest|jasmine
 framework: jest
-
+tier: large
 preRun:
   # set of commands to run before running the tests
   # for eg `yarn install`, `yarn build`
