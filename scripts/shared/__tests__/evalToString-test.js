@@ -41,6 +41,7 @@ describe('evalToString', () => {
   });
 });
 
+
 describe('Add suite to developement branch | evalToString', () => {
   it('should support StringLiteral', () => {
     expect(parseAndEval(`'foobar'`)).toBe('foobar');
