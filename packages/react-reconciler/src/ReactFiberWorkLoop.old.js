@@ -18,7 +18,7 @@ import type {EventPriority} from './ReactEventPriorities.old';
 import type {
   PendingTransitionCallbacks,
   TransitionObject,
-  Transitions,
+  Transition,
 } from './ReactFiberTracingMarkerComponent.old';
 
 import {
@@ -132,7 +132,7 @@ import {
   pickArbitraryLane,
   includesNonIdleWork,
   includesOnlyRetries,
-  includesOnlyTransitions,
+  includesOnlyNonUrgentLanes,
   includesBlockingLane,
   includesExpiredLane,
   getNextLanes,
@@ -325,7 +325,7 @@ let workInProgressRootRenderTargetTime: number = Infinity;
 // suspense heuristics and opt out of rendering more content.
 const RENDER_TIMEOUT_MS = 500;
 
-let workInProgressTransitions: Transitions | null = null;
+let workInProgressTransitions: Array<Transition> | null = null;
 export function getWorkInProgressTransitions() {
   return workInProgressTransitions;
 }
@@ -1110,7 +1110,7 @@ function finishConcurrentRender(root, exitStatus, lanes) {
     case RootSuspendedWithDelay: {
       markRootSuspended(root, lanes);
 
-      if (includesOnlyTransitions(lanes)) {
+      if (includesOnlyNonUrgentLanes(lanes)) {
         // This is a transition, so we should exit without committing a
         // placeholder and without scheduling a timeout. Delay indefinitely
         // until we receive more data.

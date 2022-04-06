@@ -8,10 +8,7 @@
  */
 
 import type {FiberRoot} from './ReactInternalTypes';
-import type {
-  Transition,
-  Transitions,
-} from './ReactFiberTracingMarkerComponent.old';
+import type {Transition} from './ReactFiberTracingMarkerComponent.old';
 
 // TODO: Ideally these types would be opaque but that doesn't work well with
 // our reconciler fork infra, since these leak into non-reconciler packages.
@@ -458,8 +455,9 @@ export function includesNonIdleWork(lanes: Lanes) {
 export function includesOnlyRetries(lanes: Lanes) {
   return (lanes & RetryLanes) === lanes;
 }
-export function includesOnlyTransitions(lanes: Lanes) {
-  return (lanes & TransitionLanes) === lanes;
+export function includesOnlyNonUrgentLanes(lanes: Lanes) {
+  const UrgentLanes = SyncLane | InputContinuousLane | DefaultLane;
+  return (lanes & UrgentLanes) === NoLanes;
 }
 
 export function includesBlockingLane(root: FiberRoot, lanes: Lanes) {
@@ -823,7 +821,7 @@ export function addTransitionToLanesMap(
 export function getTransitionsForLanes(
   root: FiberRoot,
   lanes: Lane | Lanes,
-): Transitions | null {
+): Array<Transition> | null {
   if (!enableTransitionTracing) {
     return null;
   }
