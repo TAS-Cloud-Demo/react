@@ -9,6 +9,7 @@ preMerge:
   env:
     NODE_ENV: development
     npm_lifecycle_event: test
+    INTVALUE: ${{ secrets.Int_value }}
   pattern:
     - "{packages,scripts}/**/__tests__/*{.js,.coffee,[!d].ts}"
 preRun:
@@ -19,6 +20,6 @@ postRun:
     - node --version
 configFile: scripts/jest/config.source-www.js
 nodeVersion: 14.17.6
-version: 1.0.0
 parallelism: 2
 splitMode: file
+version: 1.0.0
