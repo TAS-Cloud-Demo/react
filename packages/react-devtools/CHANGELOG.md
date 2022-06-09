@@ -4,6 +4,36 @@
 
 ---
 
+### 4.24.7
+May 31, 2022
+
+* mock requestAnimationFrame with setTimeout as a temporary fix for #24626 ([mondaychen](https://github.com/mondaychen) in [#24633](https://github.com/facebook/react/pull/24633))
+* Fix formatWithStyles not styling the results if the first argument is an object + Added unit tests ([lunaruan](https://github.com/lunaruan) in [#24554](https://github.com/facebook/react/pull/24554))
+
+---
+
+### 4.24.6
+May 12, 2022
+
+* fix a bug in console.log with non-string args ([mondaychen](https://github.com/mondaychen) in [#24546](https://github.com/facebook/react/pull/24546))
+* Add Pragma to Only Run Tests if Version Requirement Satisfied ([lunaruan](https://github.com/lunaruan) in [#24533](https://github.com/facebook/react/pull/24533))
+* [DevTools][Bug] Fix Race Condition When Unmounting Fibers ([lunaruan](https://github.com/lunaruan) in [#24510](https://github.com/facebook/react/pull/24510))
+* [React DevTools] Improve DevTools UI when Inspecting a user Component that Throws an Error  ([mondaychen](https://github.com/mondaychen) in [#24248](https://github.com/facebook/react/pull/24248))
+
+---
+
+### 4.24.5
+May 5, 2022
+
+* Fixed potential undefined error in `TreeContext` reducer ([bvaughn](https://github.com/bvaughn) in [#24501](https://github.com/facebook/react/pull/24501))
+* Fix error where Profiler sometimes incorrectlyed reported that a `forwardRef` did not render ([lunaruan](https://github.com/lunaruan) in [#24494](https://github.com/facebook/react/pull/24494))
+* Fix regex for `formateWithStyles` function ([lunaruan](https://github.com/lunaruan) in [#24486](https://github.com/facebook/react/pull/24486))
+* Fixed wrong method call for LRU cache ([bvaughn](https://github.com/bvaughn) in [#24477](https://github.com/facebook/react/pull/24477))
+* Synchronize implementations of second render logging ([billyjanitsch](https://github.com/billyjanitsch) in [#24381](https://github.com/facebook/react/pull/24381))
+* Don't stringify objects for console log second render ([lunaruan](https://github.com/lunaruan) in [#24373](https://github.com/facebook/react/pull/24373))
+
+---
+
 ### 4.24.4
 April 8, 2022
 
